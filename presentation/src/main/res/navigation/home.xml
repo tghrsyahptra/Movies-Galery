@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home"
+    app:startDestination="@id/homeFragment">
+
+    <action
+        android:id="@+id/action_global_movieDetailsActivity"
+        app:destination="@id/movieDetailsActivity" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="bd.emon.movies.home.HomeFragment"
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_SeeMoreListFragment"
+            app:destination="@id/SeeMoreListFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/SeeMoreListFragment"
+        android:name="bd.emon.movies.movieEntity.MovieEntityListFragment"
+        android:label="SeeMoreListFragment">
+        <argument
+            android:name="genreId"
+            app:argType="integer" />
+        <argument
+            android:name="pageTitle"
+            app:argType="string" />
+        <argument
+            android:name="apiCallType"
+            android:defaultValue="TRENDING_MOVIES"
+            app:argType="bd.emon.movies.movieEntity.APICallType" />
+        <action
+            android:id="@+id/action_SeeMoreListFragment_to_movieDetailsActivity"
+            app:destination="@id/movieDetailsActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/movieDetailsActivity"
+        android:name="bd.emon.movies.details.MovieDetailsActivity"
+        android:label="activity_movie_details"
+        tools:layout="@layout/activity_movie_details" >
+        <argument
+            android:name="movieId"
+            app:argType="string" />
+
+    </activity>
+</navigation>
